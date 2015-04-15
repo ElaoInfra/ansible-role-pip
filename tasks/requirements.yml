@@ -1,6 +1,6 @@
 ---
 
-- name: requirements > Pyton check
+- name: requirements > Python check
   command: "python --version"
   always_run: yes
   failed_when: false
