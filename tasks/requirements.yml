@@ -12,6 +12,18 @@
     msg: Need python
   when: _elao_python_check_output.stdout is not defined
 
+- name: requirements > Setuptools package check
+  command: "dpkg -s python-setuptools"
+  always_run: yes
+  failed_when: false
+  changed_when: false
+  register: _elao_setuptools_package_check_output
+
+- name: requirements > Setuptools package check fail
+  fail:
+    msg: Package "python-setuptools" must *not* be installed
+  when: _elao_setuptools_package_check_output.rc == 0
+
 - name: requirements > Pip package check
   command: "dpkg -s python-pip"
   always_run: yes

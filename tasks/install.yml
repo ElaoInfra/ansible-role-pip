@@ -1,5 +1,10 @@
 ---
 
+- name: install > Download and install setuptools
+  shell: "curl -sS https://bootstrap.pypa.io/ez_setup.py | python"
+  args:
+    creates: "/usr/local/bin/easy_install"
+
 - name: install > Download and install pip
   shell: "curl -sS https://bootstrap.pypa.io/get-pip.py | python"
   args:
