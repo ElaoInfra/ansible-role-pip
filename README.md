@@ -2,13 +2,15 @@
 
 # Ansible Role: Pip
 
-This role will install ACL (Access Control List) package.
+This role will install Pip
 
 It's part of the ELAO [Ansible stack](http://ansible.elao.com) but can be used as a stand alone component.
 
 ## Requirements
 
 - Ansible 1.7.2+
+- Python
+- Curl
 
 ## Installation
 

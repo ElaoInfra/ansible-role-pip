@@ -1,8 +1,6 @@
 ---
 
-- name: install > Packages
-  apt:
-    pkg:   "{{ item }}"
-    state: present
-  with_items:
-    - python-pip
+- name: install > Download and install pip
+  shell: "curl -sS https://bootstrap.pypa.io/get-pip.py | python"
+  args:
+    creates: "/usr/local/bin/pip"

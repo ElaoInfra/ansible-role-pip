@@ -1,0 +1,37 @@
+---
+
+- name: requirements > Pyton check
+  command: "python --version"
+  always_run: yes
+  failed_when: false
+  changed_when: false
+  register: _elao_python_check_output
+
+- name: requirements > Python check fail
+  fail:
+    msg: Need python
+  when: _elao_python_check_output.stdout is not defined
+
+- name: requirements > Pip package check
+  command: "dpkg -s python-pip"
+  always_run: yes
+  failed_when: false
+  changed_when: false
+  register: _elao_pip_package_check_output
+
+- name: requirements > Pip package check fail
+  fail:
+    msg: Package "python-pip" must *not* be installed
+  when: _elao_pip_package_check_output.rc == 0
+
+- name: requirements > Curl check
+  command: "curl --version"
+  always_run: yes
+  failed_when: false
+  changed_when: false
+  register: _elao_curl_check_output
+
+- name: requirements > Curl check fail
+  fail:
+    msg: Need curl, you can use https://github.com/ElaoInfra/ansible-role-curl
+  when: (_elao_curl_check_output.stdout is not defined)
