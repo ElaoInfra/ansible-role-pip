@@ -1,0 +1,12 @@
+---
+
+- name: packages > Setup pip packages
+  pip:
+    name:         "{{ item.name }}"
+    chdir:        "{{ item.chdir|default(omit) }}"
+    executable:   "{{ item.executable|default(omit) }}"
+    requirements: "{{ item.requirements|default(omit) }}"
+    extra_args:   "{{ item.extra_args|default(omit) }}"
+    state:        "{{ item.state|default('present') }}"
+    version:      "{{ item.version|default(omit) }}"
+  with_items: elao_pip_packages
